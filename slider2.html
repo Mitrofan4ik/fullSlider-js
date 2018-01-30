@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+  <title>Full Slider</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+  
+  <div class="slider2" id="sliderGallery">
+    <div class="slider-content">
+      <div class="slider2__slide"><img src="img/f1.jpg" alt="image"></div>
+      <div class="slider2__slide"><img src="img/f2.jpg" alt="image"></div>
+      <div class="slider2__slide"><img src="img/f3.jpg" alt="image"></div>
+      <div class="slider2__slide"><img src="img/f4.jpg" alt="image"></div>
+      <div class="slider2__slide"><img src="img/f5.jpg" alt="image"></div>
+      <div class="slider2__slide"><img src="img/f6.jpg" alt="image"></div>
+    </div>
+    <button id="btn2-left" type="button" class="btn2-slider prev" data-action="left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
+    <button id="btn2-right" type="button" class="btn2-slider next" data-action="right"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+  </div>
+
+  <a href="index.html" class="link">Slider 1</a>
+
+
+  <script src="slider2.js"></script>
+  <script>
+    var s1 = new Slider({
+      sliderID:'sliderGallery',
+      slidesToShow:4,
+      // infinite: false
+    })
+  </script>
+
+</body>
+
+</html>
