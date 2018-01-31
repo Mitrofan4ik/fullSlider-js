@@ -23,6 +23,10 @@
     </div>
     <button id="btn2-left" type="button" class="btn2-slider prev" data-action="left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></button>
     <button id="btn2-right" type="button" class="btn2-slider next" data-action="right"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+
+    <ul id="sliderDots" class="slider2-dots">
+      <li class="slider2-dots__dot"></li>
+    </ul>
   </div>
 
   <a href="index.html" class="link">Slider 1</a>
@@ -32,8 +36,8 @@
   <script>
     var s1 = new Slider({
       sliderID:'sliderGallery',
-      slidesToShow:4,
-      // infinite: false
+      slidesToShow: 3,
+      infinite: true
     })
   </script>
 

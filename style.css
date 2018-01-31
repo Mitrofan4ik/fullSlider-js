@@ -116,3 +116,25 @@ body {
 .btn2-slider.prev {
   left: 30px;
 }
+
+.slider2-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+}
+.slider2-dots__dot {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  display: block;
+  border-radius: 100%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.slider2-dots__dot.active{
+  background-color: red;
+}
