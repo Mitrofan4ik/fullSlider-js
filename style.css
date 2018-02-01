@@ -1,0 +1,140 @@
+html,
+body {
+  min-height: 100%;
+  background: #fff;
+}
+
+/* First slider style */
+.link {
+  color: red;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-weight: bold;
+  background: #ccc;
+  padding: 10px;
+  display: block;
+  margin: 10px auto;
+}
+.slider-holder {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 500px;
+  padding: 0;
+  list-style: none;
+}
+.slider__slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 1s ease-in 0.1s;
+  left: 0;
+}
+.slider__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.arrows {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 600px;
+  min-height: 30px;
+  z-index: 9;
+  transform: translateX(-50%);
+}
+.arrow {
+  position: absolute;
+  cursor: pointer;
+  color: #fff;
+  font-size: 50px;
+}
+.disactive {
+  color: red;
+}
+.next {
+  right: 0;
+}
+/* Second slider style */
+
+.slider2 {
+  position: relative;
+  /* padding: 0 50px; */
+  width: 100%;
+  height: 500px;
+}
+.slider-content {
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+}
+
+.slider2__slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  box-sizing: border-box;
+  background: #ccc;
+  transition: all 0.5s ease;
+}
+.slider2__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.btn2-slider {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  font-size: 70px;
+}
+.btn2-slider.disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.btn2-slider:focus {
+  background: transparent;
+  color: #fff;
+  outline: none;
+}
+.btn2-slider.next {
+  right: 30px;
+}
+.btn2-slider.prev {
+  left: 30px;
+}
+
+.slider2-dots {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+}
+.slider2-dots__dot {
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  display: block;
+  border-radius: 100%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.slider2-dots__dot.active{
+  background-color: red;
+}

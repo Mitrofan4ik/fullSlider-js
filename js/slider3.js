@@ -8,7 +8,7 @@ var carousels = document.getElementsByClassName("image-carousel");
   var inner = c.getElementsByClassName("inner")[0];
   var imgs = inner.getElementsByTagName("img");
   var currentImageIndex = 0;
-  var width = parseFloat(getComputedStyle(inner).width);
+  var width = parseFloat(getComputedStyle(inner).width); // 640
   var bubbles = [];
 
   // sliderWidth = parseFloat(getComputedStyle(inner).width);
