@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+  <title>Full Slider</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/slider5.css">
+
+</head>
+
+<body>
+
+  <div id="slierGallery" class="slider-holder">
+    <div id="sliderContent" class="slider-block">
+      <div class="slider-block__item color1"></div>
+      <div class="slider-block__item color2"></div>
+      <div class="slider-block__item color3"></div>
+      <div class="slider-block__item color4"></div>
+      <div class="slider-block__item color5"></div>
+    </div>
+
+    <button id="btn-left" type="button" class="btn-slider prev"></button>
+    <button id="btn-right" type="button" class="btn-slider next"></button>
+
+    <ul class="list-dots"></ul>
+
+  </div>
+
+</body>
+
+
+<script src="js/slider5.js"></script>
+<script>
+  var gallery = new Slider({
+    sliderID: 'slierGallery',
+    sliderItems: 3,
+    infinite: true
+  })
+</script>
+
+</html>
