@@ -9,6 +9,8 @@
   width: auto;
   height: 100%;
   display: flex;
+  transform: translateX(0);
+  transition: transform 1s linear;
 }
 
 .slider-block__item {

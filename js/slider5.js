@@ -6,18 +6,40 @@ function Slider(settings) {
   var sliderButtons = slider.getElementsByClassName("btn-slider"); // выбор всех кнопочек сдфайдера
   var sliderWidth = parseFloat(getComputedStyle(sliderContent).width);  // ширина слайдера 
 
-  console.log(sliderWidth +'-'+ 'sliderWidth');
+  var sliderGallery = document.getElementById("slierGallery"); //контейнер всео слайдера
 
-  
+  var clickCounter = 0;
+
   var init = function () {
+
+    singleSliderItemsWidth = sliderWidth / settings.sliderItems
     
     for (var i = 0; i < sliderItems.length; i++) {
-      console.dir(sliderItems[i]);
+      sliderItems[i].style.width = singleSliderItemsWidth + 'px';
+      // console.dir(sliderItems[i]);
     }
     
-    singleSliderItemsWidth = sliderWidth / settings.sliderItems + 'px';
     console.log(singleSliderItemsWidth + "-" + "singleSliderItemsWidth");
     // var current = parseFloat(sliderItems[i].style.left);
   } 
   init();
+
+
+  sliderGallery.addEventListener('click', function(e) {
+    console.dir(e.target)
+    console.dir(e.target.classList.contains('btn-slider'));
+    if (e.target.classList.contains('prev')) {
+      clickCounter += 1;
+      console.log(clickCounter)
+      sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
+    } else if (e.target.classList.contains('next')) {
+      console.log(-1 * singleSliderItemsWidth);
+      clickCounter -= 1;
+      console.log(clickCounter)
+      sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
+    }
+    //заблокировать или разблокировать кнопку при клике, вычеслить сколько мы сможем делать кликов, посчитать сколько раз счетчик переключаеться + оставшееся количество слайдов в масиве
+  });
+
+
 };
