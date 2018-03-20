@@ -17,46 +17,63 @@ function Slider(settings) {
       }
       console.log(i); 
     
+      
+      var hiddenSlides = i - slidesNumberVisible;
+      
+      
+    } 
+    init();
+    
     var sliderWidthContainer =  slider.clientWidth; // ширина контейнера родителя 
     var slidesNumberVisible = Math.round(sliderWidthContainer / singleSliderItemsWidth); // количество слайдов которое помещаеться в эран (в контейнер родителя)
-    
-    var hiddenSlides = i - slidesNumberVisible;
+    var hiddenSlides = sliderItems.length - slidesNumberVisible; // количество слайдов которое НЕ помещаеться в эран (в контейнер родителя)
     
     console.log(sliderWidthContainer + "clientWidth");
     console.log(slidesNumberVisible + " окрулила до ближайшего целого");
     console.log(hiddenSlides + " количество слайдов за пределами окна");
-    
-  } 
-  init();
-
-  // console.log(window.innerWidth + "innerWidth");
-  // console.log(window.outerWidth + "outerWidth");
-  // console.log(document.documentElement.clientWidth + "clientWidth");
   
-  
+  // sliderGallery.addEventListener('click', function(e) {
+  //   console.dir(e.target)
+  //   console.dir(e.target.classList.contains('btn-slider'));
+  //   if (e.target.classList.contains('prev')) {
+  //     clickCounter += 1;
+  //     console.log(clickCounter)
+  //     sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
+  //     if (clickCounter == hiddenSlides) {
+  //       e.target.classList.add("disable");
+  //     }
+  //   } else if (e.target.classList.contains('next')) {
+  //     clickCounter -= 1;
+  //     console.log(clickCounter)
+  //     sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
+  //     if (clickCounter == hiddenSlides) {
+  //       e.target.classList.add("disable");
+  //     }
+  //   }
+  //   //заблокировать или разблокировать кнопку при клике, вычеслить сколько мы сможем делать кликов, посчитать сколько раз счетчик переключаеться + оставшееся количество слайдов в масиве
+  // });
 
   sliderGallery.addEventListener('click', function(e) {
-
-
-    console.dir(e.target)
-
-    console.dir(e.target.classList.contains('btn-slider'));
-
     if (e.target.classList.contains('prev')) {
       clickCounter += 1;
 
       console.log(clickCounter)
-
+      
       sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
+    } else if (clickCounter == hiddenSlides) {
+      e.target.classList.add("disable");
+    }
+  });
 
-    } else if (e.target.classList.contains('next')) {
+  sliderGallery.addEventListener('click', function(e) {
+    if (e.target.classList.contains('next')) {
       clickCounter -= 1;
 
       console.log(clickCounter)
 
       sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
-
+    } else if (clickCounter == hiddenSlides) {
+      e.target.classList.add("disable");
     }
-    //заблокировать или разблокировать кнопку при клике, вычеслить сколько мы сможем делать кликов, посчитать сколько раз счетчик переключаеться + оставшееся количество слайдов в масиве
   });
 };
