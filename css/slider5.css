@@ -4,7 +4,12 @@
   overflow: hidden;
   background-color: #ccc;
   padding: 14px 0;
+  position: relative;
 }
+/* body {
+  padding: 25px;
+  margin: 10px;
+} */
 .slider-block {
   width: auto;
   height: 100%;
@@ -14,7 +19,7 @@
 }
 
 .slider-block__item {
-  /* width: 33.33%; */
+  width: 33.33%;
   height: 100%;
   display: block;
   flex: 0 0 auto;
@@ -38,17 +43,25 @@
   width: 30px;
   height: 30px;
   font-size: 25px;
-  background: rgba(255, 0, 0, 0.5);
+  background: #fff;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+}
+.btn-slider:focus {
+  outline: none;
 }
 .btn-slider.prev {
   left: 0;
 }
 .btn-slider.next {
   right: 0;
+}
+@media (max-width: 1200px) {
+  .slider-holder {
+    height: 400px;
+  }
 }
 
 @media (max-width: 800px) {
