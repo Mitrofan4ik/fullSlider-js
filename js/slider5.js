@@ -9,8 +9,10 @@ function Slider(settings) {
   var sliderGallery = document.getElementById("slierGallery"); //контейнер всео слайдера
 
   var clickCounter = 0; // первое значение счетчика
-
+  var getSliderPosition = 0; // значение transition
     
+
+
   var init = function () {
   for (var i = 0; i < sliderItems.length; i++) {
       singleSliderItemsWidth = parseFloat(getComputedStyle(sliderItems[i]).width);
@@ -54,15 +56,18 @@ function Slider(settings) {
   //   //заблокировать или разблокировать кнопку при клике, вычеслить сколько мы сможем делать кликов, посчитать сколько раз счетчик переключаеться + оставшееся количество слайдов в масиве
   // });
 
+  
+
   sliderGallery.addEventListener('click', function(e) {
     if (e.target.classList.contains('prev')) {
       clickCounter += 1;
       
-      console.log(clickCounter)
+      getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
-      sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
-      
-      setTimeout(getTranslateX, 1000);
+      sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
+
+      console.log(getSliderPosition);
+      // setTimeout(getTranslateX, 1000);
     } 
     // else if (clickCounter == hiddenSlides) {
     //   e.target.classList.add("disable");
@@ -72,12 +77,12 @@ function Slider(settings) {
   sliderGallery.addEventListener('click', function(e) {
     if (e.target.classList.contains('next')) {
       clickCounter -= 1;
+      getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
-      console.log(clickCounter)
-      
-      sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
-      
-      setTimeout(getTranslateX, 1000);
+      sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
+
+      console.log(getSliderPosition);
+      // setTimeout(getTranslateX, 1000);
     }
     //  else if (clickCounter == hiddenSlides) {
     //   e.target.classList.add("disable");
@@ -86,16 +91,16 @@ function Slider(settings) {
 };
 
 
-var myElement = document.getElementById("sliderContent");
-// myElement.style.transform = 'translateX( "singleSliderItemsWidth" + "px")';
+// var myElement = document.getElementById("sliderContent");
+// // myElement.style.transform = 'translateX( "singleSliderItemsWidth" + "px")';
 
-function getTranslateX() {
-  var style = window.getComputedStyle(myElement);
-  var matrix = new WebKitCSSMatrix(style.webkitTransform);
-  console.log(matrix);
-  console.log('translateX: ', matrix.m41);
-}
-getTranslateX();
+// function getTranslateX() {
+//   var style = window.getComputedStyle(myElement);
+//   var matrix = new WebKitCSSMatrix(style.webkitTransform);
+//   console.log(matrix);
+//   console.log('translateX: ', matrix.m41);
+// }
+// getTranslateX();
 
 // window.addEventListener('load', function(){
 //   var curTransform = new WebKitCSSMatrix(window.getComputedStyle(transformed).webkitTransform);
