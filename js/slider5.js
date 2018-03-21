@@ -14,17 +14,16 @@ function Slider(settings) {
 
 
   var init = function () {
-  for (var i = 0; i < sliderItems.length; i++) {
+    for (var i = 0; i < sliderItems.length; i++) {
       singleSliderItemsWidth = parseFloat(getComputedStyle(sliderItems[i]).width);
       console.log(singleSliderItemsWidth); // ширина в пикселах одного слайда в слайдере
     }
     console.log(i); 
-  
     
     var hiddenSlides = i - slidesNumberVisible;
     
-    
   } 
+
   init();
     
   var sliderWidthContainer =  slider.clientWidth; // ширина контейнера родителя 
@@ -56,22 +55,27 @@ function Slider(settings) {
   //   //заблокировать или разблокировать кнопку при клике, вычеслить сколько мы сможем делать кликов, посчитать сколько раз счетчик переключаеться + оставшееся количество слайдов в масиве
   // });
 
+
+ 
   
 
   sliderGallery.addEventListener('click', function(e) {
-    if (e.target.classList.contains('prev')) {
+    if (e.target.classList.contains('prev') ) {
       clickCounter += 1;
-      
+
       getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
       sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
-
       console.log(getSliderPosition);
-      // setTimeout(getTranslateX, 1000);
     } 
+    if (getSliderPosition = 0) {
+      e.target.classList.add("disable");
+    }
     // else if (clickCounter == hiddenSlides) {
     //   e.target.classList.add("disable");
     // }
+    defineSliderTransition();
+    
   });
 
   sliderGallery.addEventListener('click', function(e) {
@@ -82,12 +86,20 @@ function Slider(settings) {
       sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
 
       console.log(getSliderPosition);
-      // setTimeout(getTranslateX, 1000);
     }
     //  else if (clickCounter == hiddenSlides) {
     //   e.target.classList.add("disable");
     // }
+    defineSliderTransition();
+    
   });
+
+  var defineSliderTransition = function() {
+    getSliderPosition = (clickCounter * singleSliderItemsWidth);
+    sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
+    console.log(getSliderPosition + " позиция");
+  };
+  defineSliderTransition();
 };
 
 
@@ -101,9 +113,5 @@ function Slider(settings) {
 //   console.log('translateX: ', matrix.m41);
 // }
 // getTranslateX();
+// setTimeout(getTranslateX, 1000);
 
-// window.addEventListener('load', function(){
-//   var curTransform = new WebKitCSSMatrix(window.getComputedStyle(transformed).webkitTransform);
-//   var sliderPositionHelper = document.getElementById(sliderContent).curTransform;
-//   console.log(sliderPositionHelper);
-// });
