@@ -5,6 +5,8 @@ function Slider(settings) {
   var singleSliderItemsWidth = 0; // ширана одного слайда
   var sliderButtons = slider.getElementsByClassName("btn-slider"); // выбор всех кнопочек сдфайдера
   var sliderWidth = parseFloat(getComputedStyle(sliderContent).width);  // ширина слайдера 
+  var leftButton = document.getElementById("btn-left"); // левыая кнопка
+  var RightButton = document.getElementById("btn-right"); // правая кнопка
   
   var sliderGallery = document.getElementById("slierGallery"); //контейнер всео слайдера
 
@@ -34,48 +36,20 @@ function Slider(settings) {
   console.log(slidesNumberVisible + " окрулила до ближайшего целого");
   console.log(hiddenSlides + " количество слайдов за пределами окна");
   
-  // sliderGallery.addEventListener('click', function(e) {
-  //   console.dir(e.target)
-  //   console.dir(e.target.classList.contains('btn-slider'));
-  //   if (e.target.classList.contains('prev')) {
-  //     clickCounter += 1;
-  //     console.log(clickCounter)
-  //     sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
-  //     if (clickCounter == hiddenSlides) {
-  //       e.target.classList.add("disable");
-  //     }
-  //   } else if (e.target.classList.contains('next')) {
-  //     clickCounter -= 1;
-  //     console.log(clickCounter)
-  //     sliderContent.style.transform = 'translateX(' + (clickCounter * singleSliderItemsWidth) + 'px)';
-  //     if (clickCounter == hiddenSlides) {
-  //       e.target.classList.add("disable");
-  //     }
-  //   }
-  //   //заблокировать или разблокировать кнопку при клике, вычеслить сколько мы сможем делать кликов, посчитать сколько раз счетчик переключаеться + оставшееся количество слайдов в масиве
-  // });
-
-
- 
-  
 
   sliderGallery.addEventListener('click', function(e) {
-    if (e.target.classList.contains('prev') ) {
+    if (e.target.classList.contains('prev')) {
       clickCounter += 1;
-
+      if (clickCounter === 0) {
+        console.log(clickCounter === 0);
+        e.target.classList.add("disable");
+      }
       getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
       sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
       console.log(getSliderPosition);
-    } 
-    if (getSliderPosition = 0) {
-      e.target.classList.add("disable");
+
     }
-    // else if (clickCounter == hiddenSlides) {
-    //   e.target.classList.add("disable");
-    // }
-    defineSliderTransition();
-    
   });
 
   sliderGallery.addEventListener('click', function(e) {
@@ -84,20 +58,22 @@ function Slider(settings) {
       getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
       sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
-
+      
       console.log(getSliderPosition);
+      console.log(getSliderPosition === (singleSliderItemsWidth * hiddenSlides * clickCounter));
+      console.log(singleSliderItemsWidth * hiddenSlides * clickCounter);
+      // if (clickCounter < 0 ) {
+      //   // console.log(clickCounter < 0);
+      // }
     }
-    //  else if (clickCounter == hiddenSlides) {
-    //   e.target.classList.add("disable");
-    // }
-    defineSliderTransition();
+   
     
   });
 
   var defineSliderTransition = function() {
-    getSliderPosition = (clickCounter * singleSliderItemsWidth);
-    sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
-    console.log(getSliderPosition + " позиция");
+    if (clickCounter = 0) {
+      console.log("clickCounter = 0");
+    }
   };
   defineSliderTransition();
 };
