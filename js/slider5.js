@@ -22,11 +22,11 @@ function Slider(settings) {
     }
     console.log(i); 
     
-    leftButton.classList.add("disable");
+    // leftButton.classList.add("disable");
     
     var hiddenSlides = i - slidesNumberVisible;
     console.log(sliderItems.length + " количество слайдов");
-
+    // cloneAndCopy();
   } 
 
   init();
@@ -43,17 +43,19 @@ function Slider(settings) {
   sliderGallery.addEventListener('click', function(e) {
     if (e.target.classList.contains('prev')) {
       clickCounter += 1;
-      if (clickCounter === 0) {
-        console.log(clickCounter === 0);
-        e.target.classList.add("disable");
-        RightButton.classList.remove("disable");
-      } else {
-        RightButton.classList.remove("disable");
-      }
+      // if (clickCounter === 0) {
+      //   console.log(clickCounter === 0);
+      //   e.target.classList.add("disable");
+      //   RightButton.classList.remove("disable");
+      // } else {
+      //   RightButton.classList.remove("disable");
+      // }
       getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
       sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
       console.log(getSliderPosition);
+
+      cloneAndCopy();
 
     }
   });
@@ -71,16 +73,16 @@ function Slider(settings) {
 
       console.log(clickCounter == hiddenSlides);
 
-      if (Math.abs(clickCounter) == hiddenSlides) {
-        e.target.classList.add("disable");
-        leftButton.classList.remove("disable");
-        console.log("равен");
-      } else {
-        leftButton.classList.remove("disable");
-      }
+      // if (Math.abs(clickCounter) == hiddenSlides) {
+      //   e.target.classList.add("disable");
+      //   leftButton.classList.remove("disable");
+      //   console.log("равен");
+      // } else {
+      //   leftButton.classList.remove("disable");
+      // }
+      cloneAndCopy();
+      
     }
-   
-    
   });
 
   var defineSliderTransition = function() {
@@ -89,18 +91,37 @@ function Slider(settings) {
     }
   };
   defineSliderTransition();
+
+
+
+  // infinite slider
+  function cloneAndCopy() {
+
+    var firstSlide = sliderItems[0];
+    var lastSlide = sliderItems[sliderItems.length - 1];
+    console.log(firstSlide);
+    console.log(lastSlide);
+
+    
+    var firstSlideClone = firstSlide.cloneNode(true);
+    var lastSlideClone = lastSlide.cloneNode(true);
+    
+    firstSlideClone.removeAttribute("data-slide-index");
+    lastSlideClone.removeAttribute("data-slide-index");
+
+    sliderContent.appendChild(firstSlideClone);
+    sliderContent.insertBefore(lastSlideClone, firstSlide);
+
+  }
+
 };
 
 
-// var myElement = document.getElementById("sliderContent");
-// // myElement.style.transform = 'translateX( "singleSliderItemsWidth" + "px")';
 
-// function getTranslateX() {
-//   var style = window.getComputedStyle(myElement);
-//   var matrix = new WebKitCSSMatrix(style.webkitTransform);
-//   console.log(matrix);
-//   console.log('translateX: ', matrix.m41);
+// function cloneAndCopy(nodeId, deep) {
+//   var toClone = document.getElementById(nodeId);
+//   var clonedNode = toClone.cloneNode(deep);
+//   var insertPoint = document.getElementById("inserthere");
+//   insertPoint.appendChild(clonedNode);
 // }
-// getTranslateX();
-// setTimeout(getTranslateX, 1000);
 

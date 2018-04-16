@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Демонстрация клонирования</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+</head>
+
+<body>
+  <p id="p1">Это
+    <em>проверка</em> клонированя</p>
+  <hr />
+  <div id="inserthere" style="background-color: yellow;">
+  </div>
+  <hr />
+  <script type="text/javascript">
+
+      function cloneAndCopy(nodeId, deep) {
+        var toClone = document.getElementById(nodeId);
+        var clonedNode = toClone.cloneNode(deep);
+        var insertPoint = document.getElementById('inserthere');
+        insertPoint.appendChild(clonedNode);
+      }
+
+  </script>
+  <form action="#" method="get">
+    <input type="button" value="Кланировать" onclick="cloneAndCopy('p1',false);" />
+    <br />
+    <input type="button" value="Глубокое клонирование" onclick="cloneAndCopy('p1',true);" />
+  </form>
+</body>
+
+</html>
