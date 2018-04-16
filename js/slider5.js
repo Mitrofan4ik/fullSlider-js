@@ -22,8 +22,11 @@ function Slider(settings) {
     }
     console.log(i); 
     
-    var hiddenSlides = i - slidesNumberVisible;
+    leftButton.classList.add("disable");
     
+    var hiddenSlides = i - slidesNumberVisible;
+    console.log(sliderItems.length + " количество слайдов");
+
   } 
 
   init();
@@ -43,6 +46,9 @@ function Slider(settings) {
       if (clickCounter === 0) {
         console.log(clickCounter === 0);
         e.target.classList.add("disable");
+        RightButton.classList.remove("disable");
+      } else {
+        RightButton.classList.remove("disable");
       }
       getSliderPosition = (clickCounter * singleSliderItemsWidth); // значение transition 
       
@@ -59,12 +65,19 @@ function Slider(settings) {
       
       sliderContent.style.transform = "translateX(" + getSliderPosition + "px)";
       
-      console.log(getSliderPosition);
       console.log(getSliderPosition === (singleSliderItemsWidth * hiddenSlides * clickCounter));
-      console.log(singleSliderItemsWidth * hiddenSlides * clickCounter);
-      // if (clickCounter < 0 ) {
-      //   // console.log(clickCounter < 0);
-      // }
+      console.log(getSliderPosition);
+      console.log(getSliderPosition + singleSliderItemsWidth * hiddenSlides * clickCounter);
+
+      console.log(clickCounter == hiddenSlides);
+
+      if (Math.abs(clickCounter) == hiddenSlides) {
+        e.target.classList.add("disable");
+        leftButton.classList.remove("disable");
+        console.log("равен");
+      } else {
+        leftButton.classList.remove("disable");
+      }
     }
    
     
